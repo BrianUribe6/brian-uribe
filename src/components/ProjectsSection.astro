@@ -1,0 +1,17 @@
+---
+import config from "@/siteConfig";
+import ProjectCard, { type Project } from "./ProjectCard.astro";
+import Section from "./Section.astro";
+
+interface Props {
+  projects: Project[];
+}
+
+const { projects } = config;
+---
+
+<Section title="Projects">
+  <div class="grid gap-3 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+    {projects.map((project) => <ProjectCard {...project} />)}
+  </div>
+</Section>

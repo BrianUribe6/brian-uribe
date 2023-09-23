@@ -1,0 +1,17 @@
+---
+import MailSentPicture from "@/assets/MailSentPicture.astro";
+import ContactForm from "./ContactForm";
+import Section from "./Section.astro";
+import { Toaster } from "./ui/toaster";
+---
+
+<Section title="Contact Me">
+  <div class="grid lg:grid-cols-2 gap-4">
+    <ContactForm client:visible />
+    <div>
+      <MailSentPicture />
+    </div>
+    <!-- Only Used on this component For now -->
+    <Toaster client:visible />
+  </div>
+</Section>

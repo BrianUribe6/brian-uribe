@@ -1,0 +1,25 @@
+---
+import siteConfig from "@/siteConfig";
+import { Github, LinkedIn } from "./Icons";
+import SocialLink from "./SocialLink.astro";
+---
+
+<footer class="border-t">
+  <div class="container py-4 flex justify-between items-center">
+    <p>© Brian Uribe</p>
+    <div>
+      <ul class="flex ml-auto">
+        <li>
+          <SocialLink label="Github" href={siteConfig.github}>
+            <Github className="text-lg" aria-hidden />
+          </SocialLink>
+        </li>
+        <li>
+          <SocialLink label="LinkedIn" href={siteConfig.linkedIn}>
+            <LinkedIn className="text-lg" aria-hidden />
+          </SocialLink>
+        </li>
+      </ul>
+    </div>
+  </div>
+</footer>

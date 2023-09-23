@@ -1,0 +1,17 @@
+---
+import Contact from "@/components/ContactSection.astro";
+import Projects from "@/components/ProjectsSection.astro";
+import Layout from "../layouts/Layout.astro";
+import Hero from "@/components/HeroSection.astro";
+import Footer from "@/components/Footer.astro";
+import config from "@/siteConfig";
+---
+
+<Layout title={config.title}>
+  <main class="container space-y-24 mb-24">
+    <Hero />
+    <Projects projects={config.projects} />
+    <Contact />
+  </main>
+  <Footer />
+</Layout>

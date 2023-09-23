@@ -1,0 +1,16 @@
+<!-- This is inlined to block rendering and prevent flashing the wrong theme -->
+<script is:inline>
+const root = document.documentElement;
+const theme = (() => {
+    const preference = localStorage.getItem("theme") || "system";
+    if (preference !== "system") {
+        return preference;
+    }
+    const isDarkMode = window.matchMedia(
+        "(prefers-color-scheme: dark)"
+    ).matches;
+    return isDarkMode ? "dark" : "light";
+})();
+root.classList.remove("light", "dark");
+root.classList.add(theme);
+</script>

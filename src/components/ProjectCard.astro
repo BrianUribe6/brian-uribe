@@ -1,0 +1,63 @@
+---
+import { Badge } from "./ui/badge";
+import { Button } from "./ui/button";
+import {
+  Card,
+  CardHeader,
+  CardTitle,
+  CardContent,
+  CardDescription,
+  CardFooter,
+} from "./ui/card";
+import { Image } from "astro:assets";
+
+type Image = {
+  src: ImageMetadata;
+  alt: string;
+};
+
+export type Project = {
+  title: string;
+  description: string;
+  image: Image;
+  tags: string[];
+};
+
+interface Props extends Project {}
+
+const { image, tags, title, description } = Astro.props;
+---
+
+<Card className="group overflow-hidden">
+  <div class="relative">
+    <Image src={image.src} alt={image.alt} />
+    <span
+      class="absolute inset-0 opacity-0 group-hover:opacity-70 group-focus-within:opacity-70 transition-opacity duration-300
+      origin-bottom group-hover:backdrop-blur-xl group-focus-within:backdrop-blur-xl"
+      aria-hidden="true"></span>
+    <ul
+      class="hidden group-hover:flex group-focus-within:flex gap-1.5 self-end absolute top-4 right-4 capitalize"
+    >
+      {
+        tags.map((tag) => (
+          <li>
+            <Badge variant="secondary">{tag}</Badge>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+  <CardHeader>
+    <CardTitle>{title}</CardTitle>
+  </CardHeader>
+
+  <CardContent>
+    <CardDescription>
+      {description}
+    </CardDescription>
+  </CardContent>
+  <CardFooter className="space-x-2">
+    <Button variant="outline">View code</Button>
+    <Button variant="default">Primary</Button>
+  </CardFooter>
+</Card>

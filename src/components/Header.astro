@@ -1,0 +1,41 @@
+---
+import siteConfig from "@/siteConfig";
+import { Github, LinkedIn } from "./Icons";
+import { ModeToggle } from "./ModeToggle";
+import SocialLink from "./SocialLink.astro";
+---
+
+<header class="border-b sticky top-0 bg-background/75 backdrop-blur-md z-10">
+  <nav class="container flex items-center py-2">
+    <a class="mr-8 font-medium" href="/">Brian M. Uribe</a>
+    <ul class="flex gap-4">
+      <li>
+        <a
+          class="transition-colors hover:text-foreground/80 text-foreground/60"
+          href="/blog">Blog</a
+        >
+      </li>
+      <li>
+        <a
+          class="transition-colors hover:text-foreground/80 text-foreground/60"
+          href="/projects">Projects</a
+        >
+      </li>
+    </ul>
+    <ul class="flex ml-auto">
+      <li>
+        <SocialLink label="Github" href={siteConfig.github}>
+          <Github className="text-lg" aria-hidden />
+        </SocialLink>
+      </li>
+      <li>
+        <SocialLink label="LinkedIn" href={siteConfig.linkedIn}>
+          <LinkedIn className="text-lg" aria-hidden />
+        </SocialLink>
+      </li>
+      <li>
+        <ModeToggle client:load />
+      </li>
+    </ul>
+  </nav>
+</header>
