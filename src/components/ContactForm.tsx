@@ -24,13 +24,11 @@ function ContactForm() {
     resolver: zodResolver(contactFormSchema),
   });
 
-  const sendMessage = async (data: ContactFormModel) => {
+  const sendMessage = async (formValues: ContactFormModel) => {
     const response = await fetch(API_ENDPOINT, {
       method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(data),
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(formValues),
     });
     const statusMessage = response.ok ? SUCCESS_MESSAGE : ERROR_MESSAGE;
     toast({ description: statusMessage });
