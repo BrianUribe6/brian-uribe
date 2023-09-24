@@ -1,5 +1,7 @@
 import { type Project } from "./components/ProjectCard.astro";
 import placeholder from "./assets/placeholder.jpg";
+import project2048 from "./assets/2048.png";
+import jotter from "./assets/jotter.png";
 
 type SiteConfig = {
   /**
@@ -34,24 +36,31 @@ const config: SiteConfig = {
       description: "My personal portfolio website",
       image: { src: placeholder, alt: "placeholder" },
       tags: ["astro", "typescript", "tailwindcss"],
+      codeLink: "https://github.com/BrianUribe6/brian-uribe",
     },
     {
       title: "Jotter",
-      description: "A collaborative note taking web app",
-      image: { src: placeholder, alt: "placeholder" },
+      description: "Clean, intuitive collaborative note taking web app",
+      image: { src: jotter, alt: "Editor with placeholder text" },
       tags: ["react", "typescript", "lexical", "yjs"],
     },
     {
-      title: "2048 Clone",
-      description: "A collaborative note taking web app",
-      image: { src: placeholder, alt: "placeholder" },
-      tags: ["react", "typescript", "lexical", "yjs"],
+      title: "Elegant 2048",
+      description: "A different take on the classic 2048 game",
+      image: {
+        src: project2048,
+        alt: "2048 puzzle board with abstract background",
+      },
+      tags: ["react", "typescript"],
+      codeLink: "https://github.com/BrianUribe6/my2048",
+      demoLink: "https://brianuribe6.github.io/my2048/",
     },
     {
       title: "ILOC Register Allocator",
       description: "Register allocator for ILOC intermediate representation",
       image: { src: placeholder, alt: "placeholder" },
       tags: ["python", "C", "assembly"],
+      codeLink: "https://github.com/BrianUribe6/ILOC-Register-Allocator",
     },
   ],
 };

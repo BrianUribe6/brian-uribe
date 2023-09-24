@@ -39,7 +39,7 @@ function ContactForm() {
   return (
     <form onSubmit={handleSubmit(sendMessage)} className="space-y-4">
       <div className="grid grid-cols-2 gap-4">
-        <div className="space-y-2">
+        <div className="space-y-2 col-span-2 md:col-span-1">
           <Field
             label="First Name"
             placeholder="First Name"
@@ -49,7 +49,7 @@ function ContactForm() {
             <Input />
           </Field>
         </div>
-        <div className="space-y-2">
+        <div className="space-y-2 col-span-2 md:col-span-1 ">
           <Field
             label="Last Name"
             placeholder="Last Name"

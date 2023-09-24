@@ -1,6 +1,6 @@
 ---
 import { Badge } from "./ui/badge";
-import { Button } from "./ui/button";
+import { Button, buttonVariants } from "./ui/button";
 import {
   Card,
   CardHeader,
@@ -21,43 +21,63 @@ export type Project = {
   description: string;
   image: Image;
   tags: string[];
+  codeLink?: string;
+  demoLink?: string;
 };
 
 interface Props extends Project {}
 
-const { image, tags, title, description } = Astro.props;
+const { image, tags, title, description, demoLink, codeLink } = Astro.props;
+
+const defaultButtonClass = buttonVariants({ variant: "default" });
+const outlineButtonClass = buttonVariants({ variant: "outline" });
 ---
 
-<Card className="group overflow-hidden">
-  <div class="relative">
-    <Image src={image.src} alt={image.alt} />
-    <span
-      class="absolute inset-0 opacity-0 group-hover:opacity-70 group-focus-within:opacity-70 transition-opacity duration-300
-      origin-bottom group-hover:backdrop-blur-xl group-focus-within:backdrop-blur-xl"
-      aria-hidden="true"></span>
-    <ul
-      class="hidden group-hover:flex group-focus-within:flex gap-1.5 self-end absolute top-4 right-4 capitalize"
-    >
-      {
-        tags.map((tag) => (
-          <li>
-            <Badge variant="secondary">{tag}</Badge>
-          </li>
-        ))
-      }
-    </ul>
+<Card className="group overflow-hidden flex flex-col">
+  <div>
+    <Image class="h-52 object-cover w-full" src={image.src} alt={image.alt}  height={208}/>
   </div>
-  <CardHeader>
-    <CardTitle>{title}</CardTitle>
-  </CardHeader>
-
-  <CardContent>
-    <CardDescription>
-      {description}
-    </CardDescription>
-  </CardContent>
-  <CardFooter className="space-x-2">
-    <Button variant="outline">View code</Button>
-    <Button variant="default">Primary</Button>
-  </CardFooter>
+  <div class="flex flex-col justify-between grow">
+    <CardHeader className="space-y-2.5">
+      <ul class="flex gap-1 capitalize" aria-label="Technologies used">
+        {
+          tags.map((tag) => (
+            <li>
+              <Badge variant="outline">{tag}</Badge>
+            </li>
+          ))
+        }
+      </ul>
+      <CardTitle>{title}</CardTitle>
+    </CardHeader>
+    <div class="flex flex-col grow justify-between">
+      <CardContent>
+        <CardDescription className="line-clamp-2">
+          {description}
+        </CardDescription>
+      </CardContent>
+      <CardFooter className="space-x-2">
+        <a
+          class:list={[
+            "grow",
+            outlineButtonClass,
+            !codeLink && "opacity-50 pointer-events-none",
+          ]}
+          href={codeLink}
+        >
+          View Code
+        </a>
+        <a
+          class:list={[
+            "grow",
+            defaultButtonClass,
+            !demoLink && "opacity-50 pointer-events-none",
+          ]}
+          href={demoLink}
+        >
+          View Demo
+        </a>
+      </CardFooter>
+    </div>
+  </div>
 </Card>
