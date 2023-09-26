@@ -1,5 +1,5 @@
 import { type Project } from "./components/ProjectCard.astro";
-import placeholder from "./assets/placeholder.jpg";
+import placeholder from "./assets/placeholder.svg";
 import project2048 from "./assets/2048.png";
 import jotter from "./assets/jotter.png";
 
@@ -33,16 +33,17 @@ const config: SiteConfig = {
   projects: [
     {
       title: "Portolio",
-      description: "My personal portfolio website",
+      description: "The site you're currently on!",
       image: { src: placeholder, alt: "placeholder" },
       tags: ["astro", "typescript", "tailwindcss"],
       codeLink: "https://github.com/BrianUribe6/brian-uribe",
+      demoLink: "https://brianuribe.me",
     },
     {
       title: "Jotter",
       description: "Clean, intuitive collaborative note taking web app",
       image: { src: jotter, alt: "Editor with placeholder text" },
-      tags: ["react", "typescript", "lexical", "yjs"],
+      tags: ["Next.js", "typescript", "lexical", "yjs"],
     },
     {
       title: "Elegant 2048",
