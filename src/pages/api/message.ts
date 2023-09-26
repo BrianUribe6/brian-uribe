@@ -1,35 +1,49 @@
+import env from "@/lib/env/server";
+import sendEmail, { EmailError } from "@/lib/sendEmail";
 import { contactFormSchema } from "@/lib/validation";
+import verifyCaptcha from "@/lib/verifyCaptcha";
 import type { APIRoute } from "astro";
-import { Resend, type ErrorResponse } from "resend";
 import { z } from "zod";
 
-const FROM_EMAIL = import.meta.env.WEBSITE_EMAIL;
-const TO_EMAIL = import.meta.env.ALTERNATIVE_EMAIL;
+const FROM_EMAIL = env.WEBSITE_EMAIL;
+const TO_EMAIL = env.ALTERNATIVE_EMAIL;
+const TURNSTILE_SECRET_KEY = env.TURNSTILE_SECRET_KEY;
 
-const resend = new Resend(import.meta.env.RESEND_API_KEY);
+const IP_HEADER = "CF-Connecting-IP";
 
 export const POST: APIRoute = async ({ request }) => {
   try {
-    const requestBody = await request.json();
-    const { firstName, lastName, email, message } =
-      contactFormSchema.parse(requestBody);
+    const body = await request.json();
+    const ip = request.headers.get(IP_HEADER);
+    const {
+      firstName,
+      lastName,
+      email,
+      message,
+      "cf-turnstile-response": token,
+    } = contactFormSchema.parse(body);
 
-    const data = await resend.emails.send({
-      from: `Brian Uribe <${FROM_EMAIL}>`,
+    const isValidCaptcha = await verifyCaptcha(token, TURNSTILE_SECRET_KEY, ip);
+
+    if (!isValidCaptcha) {
+      return new Response("Invalid captcha", { status: 400 });
+    }
+
+    const fullName = `${firstName} ${lastName}`;
+    const data = await sendEmail({
+      from: `${fullName} <${FROM_EMAIL}>`,
       to: TO_EMAIL,
-      subject: `${firstName} ${lastName} <${email}> sent you a message!`,
+      subject: `${fullName} <${email}> sent you a message!`,
       text: message,
     });
-
-    if ("error" in data) {
-      const { error } = data as ErrorResponse;
-      return new Response(JSON.stringify(error), { status: error.status });
-    }
 
     return new Response(JSON.stringify(data));
   } catch (e) {
     if (e instanceof z.ZodError) {
       return new Response(JSON.stringify(e.issues), { status: 400 });
+    }
+    if (e instanceof EmailError) {
+      return new Response(e.message, { status: e.status });
     }
     return new Response("Internal Server Error", { status: 500 });
   }
