@@ -44,6 +44,7 @@ const config: SiteConfig = {
       description: "Clean, intuitive collaborative note taking web app",
       image: { src: jotter, alt: "Editor with placeholder text" },
       tags: ["Next.js", "typescript", "lexical", "yjs"],
+      demoLink: "https://jotternotes.vercel.app/",
     },
     {
       title: "Elegant 2048",
