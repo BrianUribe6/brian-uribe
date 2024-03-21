@@ -4,7 +4,7 @@
 import { z } from "zod";
 
 const envSchema = z.object({
-  PUBLIC_TURNSTILE_SITE_KEY: z.string().nonempty(),
+  PUBLIC_TURNSTILE_SITE_KEY: z.string().min(1),
 });
 
 const env = envSchema.parse({

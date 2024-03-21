@@ -4,10 +4,10 @@
 import { z } from "zod";
 
 const serverEnvSchema = z.object({
-  ALTERNATIVE_EMAIL: z.string().nonempty(),
-  TURNSTILE_SECRET_KEY: z.string().nonempty(),
-  WEBSITE_EMAIL: z.string().nonempty(),
-  RESEND_API_KEY: z.string().nonempty(),
+  ALTERNATIVE_EMAIL: z.string().min(1),
+  TURNSTILE_SECRET_KEY: z.string().min(1),
+  WEBSITE_EMAIL: z.string().min(1),
+  RESEND_API_KEY: z.string().min(1),
 });
 
 const env = serverEnvSchema.parse({

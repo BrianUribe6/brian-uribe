@@ -1,7 +1,8 @@
-import { type Project } from "./components/ProjectCard.astro";
+import type { Project } from "./components/ProjectCard.astro";
 import placeholder from "./assets/placeholder.svg";
 import project2048 from "./assets/2048.png";
 import jotter from "./assets/jotter.png";
+import compiler from "./assets/compiler.png";
 
 type SiteConfig = {
   /**
@@ -44,6 +45,7 @@ const config: SiteConfig = {
       description: "Clean, intuitive collaborative note taking web app",
       image: { src: jotter, alt: "Editor with placeholder text" },
       tags: ["Next.js", "typescript", "lexical", "yjs"],
+      codeLink: "https://github.com/jot-it/jotter",
       demoLink: "https://jotternotes.vercel.app/",
     },
     {
@@ -59,8 +61,9 @@ const config: SiteConfig = {
     },
     {
       title: "ILOC Register Allocator",
-      description: "Register allocator for ILOC intermediate representation",
-      image: { src: placeholder, alt: "placeholder" },
+      description:
+        "Register allocator for the ILOC intermediate representation",
+      image: { src: compiler, alt: "placeholder" },
       tags: ["python", "C", "assembly"],
       codeLink: "https://github.com/BrianUribe6/ILOC-Register-Allocator",
     },
