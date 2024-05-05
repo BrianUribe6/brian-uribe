@@ -42,14 +42,6 @@ const config: SiteConfig = {
       codeLink: "https://github.com/BrianUribe6/redis",
     },
     {
-      title: "Portolio",
-      description: "The site you're currently on!",
-      image: { src: placeholder, alt: "placeholder" },
-      tags: ["astro", "typescript", "tailwindcss"],
-      codeLink: "https://github.com/BrianUribe6/brian-uribe",
-      demoLink: "https://brianuribe.me",
-    },
-    {
       title: "Jotter",
       description: "Clean, intuitive collaborative note taking web app",
       image: { src: jotter, alt: "Editor with placeholder text" },
@@ -75,6 +67,14 @@ const config: SiteConfig = {
       image: { src: compiler, alt: "placeholder" },
       tags: ["python", "C", "assembly"],
       codeLink: "https://github.com/BrianUribe6/ILOC-Register-Allocator",
+    },
+    {
+      title: "Portolio",
+      description: "The site you're currently on!",
+      image: { src: placeholder, alt: "placeholder" },
+      tags: ["astro", "typescript", "tailwindcss"],
+      codeLink: "https://github.com/BrianUribe6/brian-uribe",
+      demoLink: "https://brianuribe.me",
     },
   ],
 };
