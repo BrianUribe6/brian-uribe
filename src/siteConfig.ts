@@ -1,8 +1,9 @@
 import type { Project } from "./components/ProjectCard.astro";
 import placeholder from "./assets/placeholder.svg";
-import project2048 from "./assets/2048.png";
+// import project2048 from "./assets/2048.png";
 import jotter from "./assets/jotter.png";
 import compiler from "./assets/compiler.png";
+import redis from "./assets/redis.png";
 
 type SiteConfig = {
   /**
@@ -33,6 +34,14 @@ const config: SiteConfig = {
 
   projects: [
     {
+      title: "Redis",
+      description:
+        "Tiny implementation of a Redis server and a Redis Serialization Protocol parser",
+      image: { src: redis, alt: "Redis logo" },
+      tags: ["go"],
+      codeLink: "https://github.com/BrianUribe6/redis",
+    },
+    {
       title: "Portolio",
       description: "The site you're currently on!",
       image: { src: placeholder, alt: "placeholder" },
@@ -48,17 +57,17 @@ const config: SiteConfig = {
       codeLink: "https://github.com/jot-it/jotter",
       demoLink: "https://jotternotes.vercel.app/",
     },
-    {
-      title: "Elegant 2048",
-      description: "A different take on the classic 2048 game",
-      image: {
-        src: project2048,
-        alt: "2048 puzzle board with abstract background",
-      },
-      tags: ["react", "typescript"],
-      codeLink: "https://github.com/BrianUribe6/my2048",
-      demoLink: "https://brianuribe6.github.io/my2048/",
-    },
+    // {
+    //   title: "Elegant 2048",
+    //   description: "A different take on the classic 2048 game",
+    //   image: {
+    //     src: project2048,
+    //     alt: "2048 puzzle board with abstract background",
+    //   },
+    //   tags: ["react", "typescript"],
+    //   codeLink: "https://github.com/BrianUribe6/my2048",
+    //   demoLink: "https://brianuribe6.github.io/my2048/",
+    // },
     {
       title: "ILOC Register Allocator",
       description:
