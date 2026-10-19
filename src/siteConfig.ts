@@ -1,9 +1,10 @@
-import type { Project } from "./components/ProjectCard.astro";
 import placeholder from "./assets/placeholder.svg";
+import type { Project } from "./components/ProjectCard.astro";
 // import project2048 from "./assets/2048.png";
-import jotter from "./assets/jotter.png";
 import compiler from "./assets/compiler.png";
+import jotter from "./assets/jotter.png";
 import redis from "./assets/redis.png";
+import claude from "./assets/claude.png";
 
 type SiteConfig = {
   /**
@@ -33,6 +34,16 @@ const config: SiteConfig = {
   linkedIn: "https://www.linkedin.com/in/brianuribe6/",
 
   projects: [
+    {
+      title: "Harness",
+      description: "Minimal agent harness inspired by Claude Code",
+      image : { 
+        src: claude,
+        alt: "Claude logo"
+      },
+      tags: ["go", "AI", "claude code"],
+      codeLink: "https://github.com/BrianUribe6/harness"
+    },
     {
       title: "Redis",
       description:
